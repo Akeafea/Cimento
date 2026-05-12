@@ -1,0 +1,22 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.vscode/
+
+outputs/
+log.txt
+anomalies.csv
+reconstruction_error.csv
+training_loss.csv
+nasa_scaled_anomaly_cost_analysis.csv
+
+Data/
+data/
+CAX data/
+train_FD001.txt
+
+*.sqlite
