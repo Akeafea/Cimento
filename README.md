@@ -2,6 +2,24 @@
 
 Bu depo, `Data/TEYDEP1507.pdf` raporundaki prototip mimarisine gore hazirlanmis calisir demo paketidir. Mevcut `train_FD001.txt` verisi SCADA benzeri anomali demosu icin, `CAX data` altindaki Kaggle/CAX cimento kalite verisi ise Free Lime kalite tahmini icin kullanilir.
 
+## Neler Var
+
+- NASA tabanli temsilî anomali tespiti ve MPC risk katmani
+- CAX cimento kalite verisiyle Free Lime tahmin akisi
+- Ekonomik senaryo, geri odeme ve butce ozetleri
+- HTML dashboard, SQLite ciktilari ve hafif JSON API
+
+## Dashboard
+
+Uretilen dashboard dosyasi:
+
+- `outputs/dashboard.html`
+
+Repo ekran goruntusu yerine canli artefact mantigiyla calisir. `run_demo.py` sonrasinda bu dosyayi tarayicida actiginda iki ayri katmani gorursun:
+
+- `Anomali ve MPC Demo Katmani`
+- `CAX Free Lime Tahmin Katmani`
+
 ## Veri Kurulumu
 
 Ham veri dosyalari repo disinda tutulur. Projeyi calistirmak icin su dosyalari yerelde ayni klasor yapisiyla bulundur:
@@ -11,6 +29,12 @@ Ham veri dosyalari repo disinda tutulur. Projeyi calistirmak icin su dosyalari y
 - `CAX data/CAX_Train_Quality (1)/CAX_Train_Quality.csv`
 - `CAX data/CAX_Test_Quality/CAX_Test_Quality.csv`
 - `CAX data/CAX_Freelime_Submission_File.csv`
+
+Veri kaynagi ozeti:
+
+- `train_FD001.txt`: NASA C-MAPSS tabanli simule kestirimci bakim verisi
+- `CAX data/...`: Kaggle/CAX cimento kalite veri seti
+- `Data/TEYDEP1507.pdf`: proje kapsam ve is paketi referansi
 
 ## Calistirma
 
@@ -56,8 +80,25 @@ Endpointler:
 - `http://127.0.0.1:8765/recommendations`
 - `http://127.0.0.1:8765/economics`
 
+## Repo Yapisi
+
+```text
+api/                JSON endpointleri
+dashboard/          HTML dashboard uretimi
+data_ingestion/     NASA ve CAX veri baglayicilari
+features/           turetilmis proses ozellikleri
+models/             anomali, sequence ve kalite modelleri
+mpc/                operator onayli kontrol onerileri
+reports/            ekonomik analiz tablolari
+run_demo.py         butun prototipi uca uca calistiran giris noktasi
+```
+
 ## Not
 
 Anomali F1 ve guven skorlari, gercek saha etiketi olmadigi icin deterministik pseudo-ground-truth uzerinden hesaplanir. Bu nedenle bu metrikler sunum/prototip seviyesindedir; gercek performans iddiasi degildir.
 
 CAX Free Lime metrikleri ise gercek hedef degiskeni olan `Output Parameter` uzerinde zaman bazli holdout ile hesaplanir. Bu kisim, NASA tabanli anomali demosuna gore daha guvenilir bir kalite tahmini gosterir; yine de fabrika sahasinda kullanmadan once proses uzmaniyla degisken anlamlari ve zaman kaymalari dogrulanmalidir.
+
+## Lisans
+
+Bu repo [MIT License](LICENSE) ile lisanslanmistir.
