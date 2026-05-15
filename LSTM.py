@@ -8,6 +8,7 @@ from keras.models import Model
 from keras.layers import Input, LSTM, RepeatVector, TimeDistributed, Dense
 from keras.callbacks import EarlyStopping
 
+from project_config import DATA_FILE
 
 log_file = open("log.txt", "w", encoding="utf-8")
 original_stdout = sys.stdout
@@ -32,7 +33,7 @@ sys.stdout = Tee(original_stdout, log_file)
 cols = ["unit", "cycle", "op1", "op2", "op3"] + [f"s{i}" for i in range(1, 22)]
 
 df = pd.read_csv(
-    "train_FD001.txt",
+    DATA_FILE,
     sep=r"\s+",
     header=None,
     names=cols,

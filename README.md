@@ -1,6 +1,6 @@
 # Cimento MPC TEYDEP Prototip Demo
 
-Bu depo, `Data/TEYDEP1507.pdf` raporundaki prototip mimarisine gore hazirlanmis calisir demo paketidir. Mevcut `train_FD001.txt` verisi SCADA benzeri anomali demosu icin, `CAX data` altindaki Kaggle/CAX cimento kalite verisi ise Free Lime kalite tahmini icin kullanilir.
+Bu depo, `Data/TEYDEP1507.pdf` raporundaki prototip mimarisine gore hazirlanmis calisir demo paketidir. Repodaki `train/train_FD001.txt` verisi SCADA benzeri anomali demosu icin, istege bagli `CAX data` altindaki Kaggle/CAX cimento kalite verisi ise Free Lime kalite tahmini icin kullanilir.
 
 ## Neler Var
 
@@ -22,19 +22,23 @@ Repo ekran goruntusu yerine canli artefact mantigiyla calisir. `run_demo.py` son
 
 ## Veri Kurulumu
 
-Ham veri dosyalari repo disinda tutulur. Projeyi calistirmak icin su dosyalari yerelde ayni klasor yapisiyla bulundur:
+Ana demo verisi repo ile birlikte gelir:
 
-- `train_FD001.txt`
-- `Data/TEYDEP1507.pdf`
+- `train/train_FD001.txt`
+
+Kod ayrica eski yerel kullanim icin `train_FD001.txt`, `data/train_FD001.txt` ve `Data/train_FD001.txt` konumlarini da otomatik tanir.
+
+Istege bagli kalite tahmini katmani icin su CAX dosyalari ayni klasor yapisiyla eklenebilir. Bu dosyalar yoksa demo yine calisir, sadece CAX kalite metrikleri "dataset not found" olarak raporlanir:
+
 - `CAX data/CAX_Train_Quality (1)/CAX_Train_Quality.csv`
 - `CAX data/CAX_Test_Quality/CAX_Test_Quality.csv`
 - `CAX data/CAX_Freelime_Submission_File.csv`
 
 Veri kaynagi ozeti:
 
-- `train_FD001.txt`: NASA C-MAPSS tabanli simule kestirimci bakim verisi
-- `CAX data/...`: Kaggle/CAX cimento kalite veri seti
-- `Data/TEYDEP1507.pdf`: proje kapsam ve is paketi referansi
+- `train/train_FD001.txt`: NASA C-MAPSS tabanli simule kestirimci bakim verisi
+- `CAX data/...`: Kaggle/CAX cimento kalite veri seti, istege bagli
+- `Data/TEYDEP1507.pdf`: proje kapsam ve is paketi referansi, istege bagli dokuman
 
 ## Calistirma
 

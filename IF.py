@@ -4,13 +4,15 @@ import matplotlib.pyplot as plt
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
+from project_config import DATA_FILE
+
 # =========================================================
 # 1) VERIYI OKU
 # =========================================================
 cols = ["unit", "cycle", "op1", "op2", "op3"] + [f"s{i}" for i in range(1, 22)]
 
 df = pd.read_csv(
-    "train_FD001.txt",
+    DATA_FILE,
     sep=r"\s+",
     header=None,
     names=cols,

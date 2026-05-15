@@ -17,6 +17,6 @@ nasa_scaled_anomaly_cost_analysis.csv
 Data/
 data/
 CAX data/
-train_FD001.txt
+/train_FD001.txt
 
 *.sqlite

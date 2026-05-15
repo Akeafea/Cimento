@@ -7,6 +7,12 @@ from project_config import DATA_FILE, RAW_COLUMNS, SENSOR_MAP
 
 def load_scada_like_data(path=DATA_FILE, max_units: int | None = None) -> pd.DataFrame:
     """Load NASA turbofan data as a deterministic SCADA-like cement process feed."""
+    if not path.exists():
+        raise FileNotFoundError(
+            f"SCADA demo veri dosyasi bulunamadi: {path}. "
+            "Beklenen dosya: train/train_FD001.txt"
+        )
+
     df = pd.read_csv(path, sep=r"\s+", header=None, names=RAW_COLUMNS, engine="python")
     if max_units:
         selected_units = sorted(df["unit"].unique())[:max_units]

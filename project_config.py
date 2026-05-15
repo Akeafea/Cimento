@@ -1,8 +1,29 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-DATA_FILE = ROOT / "train_FD001.txt"
 OUTPUT_DIR = ROOT / "outputs"
+
+DATA_FILE_CANDIDATES = [
+    ROOT / "train" / "train_FD001.txt",
+    ROOT / "train_FD001.txt",
+    ROOT / "data" / "train_FD001.txt",
+    ROOT / "Data" / "train_FD001.txt",
+]
+
+
+def resolve_data_file() -> Path:
+    for candidate in DATA_FILE_CANDIDATES:
+        if candidate.exists():
+            return candidate
+
+    expected = ", ".join(str(path.relative_to(ROOT)) for path in DATA_FILE_CANDIDATES)
+    raise FileNotFoundError(
+        "train_FD001.txt bulunamadi. Demo verisini su konumlardan birine koyun: "
+        f"{expected}"
+    )
+
+
+DATA_FILE = resolve_data_file()
 
 RAW_COLUMNS = ["unit", "cycle", "op1", "op2", "op3"] + [f"s{i}" for i in range(1, 22)]
 
